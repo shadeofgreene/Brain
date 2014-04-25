@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}") = "Brain", "Brain\Brain.iceproj", "{99B6F1FD-B05C-4728-921F-7F7CADDC8ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brain.Domain", "Brain.Domain\Brain.Domain.csproj", "{A32031F8-B06D-4517-9628-C2951B695965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brain.Admin", "Brain.Admin\Brain.Admin.csproj", "{B61FF316-BECD-4232-8634-55BFB1987EDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99B6F1FD-B05C-4728-921F-7F7CADDC8ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99B6F1FD-B05C-4728-921F-7F7CADDC8ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99B6F1FD-B05C-4728-921F-7F7CADDC8ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99B6F1FD-B05C-4728-921F-7F7CADDC8ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A32031F8-B06D-4517-9628-C2951B695965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32031F8-B06D-4517-9628-C2951B695965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32031F8-B06D-4517-9628-C2951B695965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32031F8-B06D-4517-9628-C2951B695965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B61FF316-BECD-4232-8634-55BFB1987EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B61FF316-BECD-4232-8634-55BFB1987EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B61FF316-BECD-4232-8634-55BFB1987EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B61FF316-BECD-4232-8634-55BFB1987EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

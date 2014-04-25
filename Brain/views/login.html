@@ -1,0 +1,37 @@
+<div data-role="view" id="loginView" data-title="Login to myBrain" data-show="brain.loginViewModel.onLoginViewShow" data-model="brain.loginViewModel">
+	<div class="logo-banner">
+		<img src="./images/SdpiBrain.png" style="width:95%; padding: 20px 0 0 2%"/>
+	</div>
+	<div>
+		<h3 data-bind="visible: isLoggedIn">Welcome, <span data-bind="	text: username"></span>!</h3>
+		<!--<input id="logout" type="submit" data-role="button" data-bind="click: onLogout, visible: isLoggedIn" value="Logout" class="login-button" />-->
+		<div class="filter-update-button">
+			<a id="logout" data-role="button" data-bind="click: onLogout, visible: isLoggedIn" >Update Tools</a>
+		</div>
+	</div>
+	<form data-bind="events: { keyup: checkEnter }">
+		<h3 data-bind="invisible: isLoggedIn">Enter your credentials:</h3>
+		<ul data-role="listview" data-style="inset" data-bind="invisible: isLoggedIn">
+			<li>
+				<label>
+					<div>Username</div>
+					<input type="text" data-bind="value: username" />
+				</label>
+			</li>
+			<li>
+				<label>
+					<div>Password</div>
+					<input type="password" data-bind="value: password" />
+				</label>
+			</li>
+		</ul>
+		<!--<input id="login" type="submit" data-role="button" data-bind="click: onLogin, invisible: isLoggedIn" value="Login" class="login-button" />-->
+		<div class="filter-update-button">
+			<a id="login" data-role="button" data-bind="click: onLogin, invisible: isLoggedIn" >Login</a>
+		</div>
+		<br/>
+		<div class="filter-update-button">
+			<a id="admin-quick-login" data-role="button" data-bind="click: adminQuickLogin, invisible: isLoggedIn" >Admin Quick Login</a>
+		</div>
+	</form>
+</div>

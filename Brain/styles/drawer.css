@@ -1,0 +1,68 @@
+/*[data-role="drawer"] .km-group-title {
+	background: #777777;
+	color: #000000;
+	font-weight: normal;
+}*/
+
+[data-role="drawer"] .km-widget {
+	background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(0,0,0,.73)),color-stop(1, rgba(0,0,0,.8)));
+	background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.73),rgba(0,0,0,.8));
+	background-image: -ms-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.73),rgba(0,0,0,.8));
+	background-repeat: repeat;
+	background-position: 0 0;
+	background-color: rgb(244, 244, 244);
+	
+}
+
+[data-role="drawer"] .km-group-title {
+	color: #999999;
+	font-weight: bold;
+	background: #333333;
+	padding: 14px 0;
+}
+
+[data-role="drawer"] .km-list>li {
+	background: #444444;
+	border-color: rgb(53, 53, 53);
+	color: #eeeeee;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+	-ms-box-shadow: inset 0 1px 0 #ffffff;
+	-ms-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+	box-shadow: inset 0 1px 0 #ffffff;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+[data-layout="brain-right-drawer-w-filter"] {
+	-webkit-box-shadow: 1px 0 10px #000000;
+	-ms-box-shadow: 1px 0 10px #000000;
+	box-shadow: 1px 0 10px #000000;
+}
+
+[data-role="drawer"] .km-widget .km-listview-link {
+	padding: 1.3em .7em
+}
+
+[data-role="drawer"] .km-list select:not([multiple]) {
+	color: rgb(162, 103, 103);
+}
+
+.filter-update-button {
+	margin: 0 3%;
+	width:94%
+}
+
+.filter-update-button a {
+	width: 100%;
+	padding: 13px 10px;
+	text-align: center;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	background-color: dodgerblue !important;
+	background-image: none !important;
+}
+
+.km-flat .km-view .km-content .km-button.km-state-active {
+	background-color: rgb(18, 125, 191) !important;
+	border: 1px solid rgb(18, 125, 191);
+	background-image: none;
+}

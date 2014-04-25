@@ -1,0 +1,755 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DNRmanageModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DNRmanageModelStoreContainer">
+          <EntitySet Name="16_inches" EntityType="DNRmanageModel.Store.16_inches" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="32_inches" EntityType="DNRmanageModel.Store.32_inches" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="companyRepProfile" EntityType="DNRmanageModel.Store.companyRepProfile" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="companyReps" EntityType="DNRmanageModel.Store.companyReps" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="cutter_type" EntityType="DNRmanageModel.Store.cutter_type" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="cutters" EntityType="DNRmanageModel.Store.cutters" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_drift_sizes" EntityType="DNRmanageModel.Store.part_drift_sizes" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_drill_sizes" EntityType="DNRmanageModel.Store.part_drill_sizes" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_inner_diameter" EntityType="DNRmanageModel.Store.part_inner_diameter" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_outer_diameter" EntityType="DNRmanageModel.Store.part_outer_diameter" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_style" EntityType="DNRmanageModel.Store.part_style" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="part_threads" EntityType="DNRmanageModel.Store.part_threads" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="parts" EntityType="DNRmanageModel.Store.parts" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="parts_cutter_junction" EntityType="DNRmanageModel.Store.parts_cutter_junction" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="repairs" EntityType="DNRmanageModel.Store.repairs" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="request_status" EntityType="DNRmanageModel.Store.request_status" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="requests" EntityType="DNRmanageModel.Store.requests" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="states" EntityType="DNRmanageModel.Store.states" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="stockPoint" EntityType="DNRmanageModel.Store.stockPoint" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="tool_status" EntityType="DNRmanageModel.Store.tool_status" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="tool_type" EntityType="DNRmanageModel.Store.tool_type" store:Type="Tables" Schema="DNRmanage" />
+          <EntitySet Name="tools" EntityType="DNRmanageModel.Store.tools" store:Type="Tables" Schema="DNRmanage" />
+        </EntityContainer>
+        <EntityType Name="16_inches">
+          <Key>
+            <PropertyRef Name="16_inchesId" />
+          </Key>
+          <Property Name="16_inchesId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="16_fraction" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="16_decimal" Type="decimal" Nullable="false" Scale="4" />
+        </EntityType>
+        <EntityType Name="32_inches">
+          <Key>
+            <PropertyRef Name="32_inchesId" />
+          </Key>
+          <Property Name="32_inchesId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="32_fraction" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="32_decimal" Type="decimal" Nullable="false" Scale="5" />
+        </EntityType>
+        <EntityType Name="companyRepProfile">
+          <Key>
+            <PropertyRef Name="companyRepProfileId" />
+          </Key>
+          <Property Name="companyRepProfileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="companyRepPassword" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="repId" Type="int" Nullable="false" />
+          <Property Name="lastAuthentication" Type="datetime" />
+          <Property Name="tokenExpirationDays" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companyReps">
+          <Key>
+            <PropertyRef Name="repId" />
+          </Key>
+          <Property Name="repId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="rep_firstName" Type="varchar" MaxLength="45" />
+          <Property Name="rep_lastName" Type="varchar" MaxLength="45" />
+          <Property Name="rep_cellNum" Type="varchar" MaxLength="45" />
+          <Property Name="rep_email" Type="varchar" MaxLength="45" />
+          <Property Name="loginToken" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cutter_type">
+          <Key>
+            <PropertyRef Name="cutter_typeId" />
+          </Key>
+          <Property Name="cutter_typeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cutter_type_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="cutters">
+          <Key>
+            <PropertyRef Name="cutterId" />
+          </Key>
+          <Property Name="cutterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="cutter_name" Type="varchar" MaxLength="45" />
+          <Property Name="cutter_typeId" Type="int" />
+          <Property Name="cutter_diameter_decimal_inches" Type="decimal" Scale="3" />
+          <Property Name="cutter_diameter_fraction_inches" Type="varchar" MaxLength="45" />
+          <Property Name="cutter_diameter_mm" Type="int" />
+        </EntityType>
+        <EntityType Name="part_drift_sizes">
+          <Key>
+            <PropertyRef Name="drift_sizeId" />
+          </Key>
+          <Property Name="drift_sizeId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="drift_size_fractional_inches" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="drift_size_decimal_inches" Type="decimal" Nullable="false" Scale="5" />
+        </EntityType>
+        <EntityType Name="part_drill_sizes">
+          <Key>
+            <PropertyRef Name="drill_sizeId" />
+          </Key>
+          <Property Name="drill_sizeId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="drill_size_fractional_inches" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="drill_size_decimal_inches" Type="decimal" Nullable="false" Scale="5" />
+        </EntityType>
+        <EntityType Name="part_inner_diameter">
+          <Key>
+            <PropertyRef Name="inner_diameterId" />
+          </Key>
+          <Property Name="inner_diameterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="inner_diameter_decimal_inches" Type="decimal" Scale="4" />
+          <Property Name="inner_diameter_fractional_inches" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="part_outer_diameter">
+          <Key>
+            <PropertyRef Name="outer_diameterId" />
+          </Key>
+          <Property Name="outer_diameterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="outer_diameter_decimal_inches" Type="decimal" Scale="4" />
+          <Property Name="outer_diameter_fractional_inches" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="part_style">
+          <Key>
+            <PropertyRef Name="styleId" />
+          </Key>
+          <Property Name="styleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="style_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="part_threads">
+          <Key>
+            <PropertyRef Name="threadID" />
+          </Key>
+          <Property Name="threadID" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="thread_name" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="parts">
+          <Key>
+            <PropertyRef Name="partId" />
+          </Key>
+          <Property Name="partId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tooltypeId" Type="int" />
+          <Property Name="drill_sizeId" Type="int" />
+          <Property Name="drift_sizeId" Type="int" />
+          <Property Name="threadId" Type="int" />
+          <Property Name="inner_diameterId" Type="int" />
+          <Property Name="outer_diameterId" Type="int" />
+          <Property Name="styleId" Type="int" />
+        </EntityType>
+        <EntityType Name="parts_cutter_junction">
+          <Key>
+            <PropertyRef Name="partId" />
+            <PropertyRef Name="cutterId" />
+          </Key>
+          <Property Name="partId" Type="int" Nullable="false" />
+          <Property Name="cutterId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repairs">
+          <Key>
+            <PropertyRef Name="repairId" />
+          </Key>
+          <Property Name="repairId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="toolId" Type="uint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request_status">
+          <Key>
+            <PropertyRef Name="request_statusId" />
+          </Key>
+          <Property Name="request_statusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="request_status" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="requests">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="repId" Type="int" />
+          <Property Name="stock_pointId" Type="int" />
+          <Property Name="request_statusId" Type="int" />
+          <Property Name="comments_from_rep" Type="varchar" />
+          <Property Name="comments_from_controller" Type="varchar" />
+          <Property Name="tool_typeId" Type="int" />
+          <Property Name="partId" Type="int" />
+          <Property Name="drill_sizeId" Type="int" />
+          <Property Name="threadId" Type="int" />
+          <Property Name="styleId" Type="int" />
+          <Property Name="date_needed" Type="datetime" />
+          <Property Name="toolId_to_fulfill" Type="int" />
+          <Property Name="date_to_arrive" Type="datetime" />
+          <Property Name="transit_serviceID" Type="int" />
+          <Property Name="transit_dropoff_instructions" Type="varchar" />
+        </EntityType>
+        <EntityType Name="states">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="state_full_name" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="state_abbr" Type="varchar" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="stockPoint">
+          <Key>
+            <PropertyRef Name="stockPointId" />
+          </Key>
+          <Property Name="stockPointId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="stock_city" Type="varchar" MaxLength="45" />
+          <Property Name="stock_stateId" Type="uint" />
+          <Property Name="stock_address1" Type="varchar" MaxLength="45" />
+          <Property Name="stock_address2" Type="varchar" MaxLength="45" />
+          <Property Name="stock_zip" Type="varchar" MaxLength="45" />
+          <Property Name="stock_name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tool_status">
+          <Key>
+            <PropertyRef Name="tool_statusId" />
+          </Key>
+          <Property Name="tool_statusId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tool_status" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tool_type">
+          <Key>
+            <PropertyRef Name="tool_typeId" />
+          </Key>
+          <Property Name="tool_typeId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="tool_type_name" Type="varchar" Nullable="false" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="tools">
+          <Key>
+            <PropertyRef Name="toolId" />
+          </Key>
+          <Property Name="toolId" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="serial" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="partId" Type="int" />
+          <Property Name="tool_statusId" Type="uint" />
+          <Property Name="stockPointId" Type="uint" />
+          <Property Name="in_transitId" Type="uint" />
+          <Property Name="length1" Type="decimal" Scale="2" />
+          <Property Name="length2" Type="decimal" Scale="2" />
+          <Property Name="length3" Type="decimal" Scale="2" />
+          <Property Name="length4" Type="decimal" Scale="2" />
+          <Property Name="length5" Type="decimal" Scale="2" />
+          <Property Name="length_total" Type="decimal" Scale="2" />
+          <Property Name="top_Od_decimal" Type="decimal" Scale="4" />
+          <Property Name="mid_Od_decimal" Type="decimal" Scale="4" />
+          <Property Name="bottom_Od_decimal" Type="decimal" Scale="4" />
+          <Property Name="top_Od_fractional_inches" Type="varchar" MaxLength="45" />
+          <Property Name="mid_Od_fractional_inches" Type="varchar" MaxLength="45" />
+          <Property Name="bottom_Od_fractional_inches" Type="varchar" MaxLength="45" />
+          <Property Name="sdp_toolId" Type="uint" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DNRmanageModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DNRmanageEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="C16_inches" EntityType="DNRmanageModel.C16_inches" />
+          <EntitySet Name="C32_inches" EntityType="DNRmanageModel.C32_inches" />
+          <EntitySet Name="companyRepProfiles" EntityType="DNRmanageModel.companyRepProfile" />
+          <EntitySet Name="companyReps" EntityType="DNRmanageModel.companyRep" />
+          <EntitySet Name="cutter_type" EntityType="DNRmanageModel.cutter_type" />
+          <EntitySet Name="cutters" EntityType="DNRmanageModel.cutter" />
+          <EntitySet Name="part_drift_sizes" EntityType="DNRmanageModel.part_drift_sizes" />
+          <EntitySet Name="part_drill_sizes" EntityType="DNRmanageModel.part_drill_sizes" />
+          <EntitySet Name="part_inner_diameter" EntityType="DNRmanageModel.part_inner_diameter" />
+          <EntitySet Name="part_outer_diameter" EntityType="DNRmanageModel.part_outer_diameter" />
+          <EntitySet Name="part_style" EntityType="DNRmanageModel.part_style" />
+          <EntitySet Name="part_threads" EntityType="DNRmanageModel.part_threads" />
+          <EntitySet Name="parts" EntityType="DNRmanageModel.part" />
+          <EntitySet Name="parts_cutter_junction" EntityType="DNRmanageModel.parts_cutter_junction" />
+          <EntitySet Name="repairs" EntityType="DNRmanageModel.repair" />
+          <EntitySet Name="request_status" EntityType="DNRmanageModel.request_status" />
+          <EntitySet Name="requests" EntityType="DNRmanageModel.request" />
+          <EntitySet Name="states" EntityType="DNRmanageModel.state" />
+          <EntitySet Name="stockPoints" EntityType="DNRmanageModel.stockPoint" />
+          <EntitySet Name="tool_status" EntityType="DNRmanageModel.tool_status" />
+          <EntitySet Name="tool_type" EntityType="DNRmanageModel.tool_type" />
+          <EntitySet Name="tools" EntityType="DNRmanageModel.tool" />
+        </EntityContainer>
+        <EntityType Name="C16_inches">
+          <Key>
+            <PropertyRef Name="C16_inchesId" />
+          </Key>
+          <Property Name="C16_inchesId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="C16_fraction" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="C16_decimal" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C32_inches">
+          <Key>
+            <PropertyRef Name="C32_inchesId" />
+          </Key>
+          <Property Name="C32_inchesId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="C32_fraction" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="C32_decimal" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companyRepProfile">
+          <Key>
+            <PropertyRef Name="companyRepProfileId" />
+          </Key>
+          <Property Name="companyRepProfileId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="companyRepPassword" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="repId" Type="Int32" Nullable="false" />
+          <Property Name="lastAuthentication" Type="DateTime" />
+          <Property Name="tokenExpirationDays" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companyRep">
+          <Key>
+            <PropertyRef Name="repId" />
+          </Key>
+          <Property Name="repId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="rep_firstName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="rep_lastName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="rep_cellNum" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="rep_email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="loginToken" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="cutter_type">
+          <Key>
+            <PropertyRef Name="cutter_typeId" />
+          </Key>
+          <Property Name="cutter_typeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="cutter_type_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="cutter">
+          <Key>
+            <PropertyRef Name="cutterId" />
+          </Key>
+          <Property Name="cutterId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="cutter_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cutter_typeId" Type="Int32" />
+          <Property Name="cutter_diameter_decimal_inches" Type="Decimal" />
+          <Property Name="cutter_diameter_fraction_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="cutter_diameter_mm" Type="Int32" />
+        </EntityType>
+        <EntityType Name="part_drift_sizes">
+          <Key>
+            <PropertyRef Name="drift_sizeId" />
+          </Key>
+          <Property Name="drift_sizeId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="drift_size_fractional_inches" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="drift_size_decimal_inches" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="part_drill_sizes">
+          <Key>
+            <PropertyRef Name="drill_sizeId" />
+          </Key>
+          <Property Name="drill_sizeId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="drill_size_fractional_inches" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="drill_size_decimal_inches" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <EntityType Name="part_inner_diameter">
+          <Key>
+            <PropertyRef Name="inner_diameterId" />
+          </Key>
+          <Property Name="inner_diameterId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="inner_diameter_decimal_inches" Type="Decimal" />
+          <Property Name="inner_diameter_fractional_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="part_outer_diameter">
+          <Key>
+            <PropertyRef Name="outer_diameterId" />
+          </Key>
+          <Property Name="outer_diameterId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="outer_diameter_decimal_inches" Type="Decimal" />
+          <Property Name="outer_diameter_fractional_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="part_style">
+          <Key>
+            <PropertyRef Name="styleId" />
+          </Key>
+          <Property Name="styleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="style_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="part_threads">
+          <Key>
+            <PropertyRef Name="threadID" />
+          </Key>
+          <Property Name="threadID" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="thread_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="part">
+          <Key>
+            <PropertyRef Name="partId" />
+          </Key>
+          <Property Name="partId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="tooltypeId" Type="Int32" />
+          <Property Name="drill_sizeId" Type="Int32" />
+          <Property Name="drift_sizeId" Type="Int32" />
+          <Property Name="threadId" Type="Int32" />
+          <Property Name="inner_diameterId" Type="Int32" />
+          <Property Name="outer_diameterId" Type="Int32" />
+          <Property Name="styleId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="parts_cutter_junction">
+          <Key>
+            <PropertyRef Name="partId" />
+            <PropertyRef Name="cutterId" />
+          </Key>
+          <Property Name="partId" Type="Int32" Nullable="false" />
+          <Property Name="cutterId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="repair">
+          <Key>
+            <PropertyRef Name="repairId" />
+          </Key>
+          <Property Name="repairId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="toolId" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="request_status">
+          <Key>
+            <PropertyRef Name="request_statusId" />
+          </Key>
+          <Property Name="request_statusId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="request_status1" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="requestId" />
+          </Key>
+          <Property Name="requestId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="repId" Type="Int32" />
+          <Property Name="stock_pointId" Type="Int32" />
+          <Property Name="request_statusId" Type="Int32" />
+          <Property Name="comments_from_rep" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="comments_from_controller" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="tool_typeId" Type="Int32" />
+          <Property Name="partId" Type="Int32" />
+          <Property Name="drill_sizeId" Type="Int32" />
+          <Property Name="threadId" Type="Int32" />
+          <Property Name="styleId" Type="Int32" />
+          <Property Name="date_needed" Type="DateTime" />
+          <Property Name="toolId_to_fulfill" Type="Int32" />
+          <Property Name="date_to_arrive" Type="DateTime" />
+          <Property Name="transit_serviceID" Type="Int32" />
+          <Property Name="transit_dropoff_instructions" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="state">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="state_full_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="state_abbr" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="stockPoint">
+          <Key>
+            <PropertyRef Name="stockPointId" />
+          </Key>
+          <Property Name="stockPointId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="stock_city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="stock_stateId" Type="Int64" />
+          <Property Name="stock_address1" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="stock_address2" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="stock_zip" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="stock_name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tool_status">
+          <Key>
+            <PropertyRef Name="tool_statusId" />
+          </Key>
+          <Property Name="tool_statusId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="tool_status1" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tool_type">
+          <Key>
+            <PropertyRef Name="tool_typeId" />
+          </Key>
+          <Property Name="tool_typeId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="tool_type_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tool">
+          <Key>
+            <PropertyRef Name="toolId" />
+          </Key>
+          <Property Name="toolId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="serial" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="partId" Type="Int32" />
+          <Property Name="tool_statusId" Type="Int64" />
+          <Property Name="stockPointId" Type="Int64" />
+          <Property Name="in_transitId" Type="Int64" />
+          <Property Name="length1" Type="Decimal" />
+          <Property Name="length2" Type="Decimal" />
+          <Property Name="length3" Type="Decimal" />
+          <Property Name="length4" Type="Decimal" />
+          <Property Name="length5" Type="Decimal" />
+          <Property Name="length_total" Type="Decimal" />
+          <Property Name="top_Od_decimal" Type="Decimal" />
+          <Property Name="mid_Od_decimal" Type="Decimal" />
+          <Property Name="bottom_Od_decimal" Type="Decimal" />
+          <Property Name="top_Od_fractional_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="mid_Od_fractional_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="bottom_Od_fractional_inches" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="sdp_toolId" Type="Int64" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DNRmanageModelStoreContainer" CdmEntityContainer="DNRmanageEntities">
+          <EntitySetMapping Name="C16_inches">
+            <EntityTypeMapping TypeName="DNRmanageModel.C16_inches">
+              <MappingFragment StoreEntitySet="16_inches">
+                <ScalarProperty Name="C16_inchesId" ColumnName="16_inchesId" />
+                <ScalarProperty Name="C16_fraction" ColumnName="16_fraction" />
+                <ScalarProperty Name="C16_decimal" ColumnName="16_decimal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C32_inches">
+            <EntityTypeMapping TypeName="DNRmanageModel.C32_inches">
+              <MappingFragment StoreEntitySet="32_inches">
+                <ScalarProperty Name="C32_inchesId" ColumnName="32_inchesId" />
+                <ScalarProperty Name="C32_fraction" ColumnName="32_fraction" />
+                <ScalarProperty Name="C32_decimal" ColumnName="32_decimal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companyRepProfiles">
+            <EntityTypeMapping TypeName="DNRmanageModel.companyRepProfile">
+              <MappingFragment StoreEntitySet="companyRepProfile">
+                <ScalarProperty Name="companyRepProfileId" ColumnName="companyRepProfileId" />
+                <ScalarProperty Name="companyRepPassword" ColumnName="companyRepPassword" />
+                <ScalarProperty Name="repId" ColumnName="repId" />
+                <ScalarProperty Name="lastAuthentication" ColumnName="lastAuthentication" />
+                <ScalarProperty Name="tokenExpirationDays" ColumnName="tokenExpirationDays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companyReps">
+            <EntityTypeMapping TypeName="DNRmanageModel.companyRep">
+              <MappingFragment StoreEntitySet="companyReps">
+                <ScalarProperty Name="repId" ColumnName="repId" />
+                <ScalarProperty Name="rep_firstName" ColumnName="rep_firstName" />
+                <ScalarProperty Name="rep_lastName" ColumnName="rep_lastName" />
+                <ScalarProperty Name="rep_cellNum" ColumnName="rep_cellNum" />
+                <ScalarProperty Name="rep_email" ColumnName="rep_email" />
+                <ScalarProperty Name="loginToken" ColumnName="loginToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cutter_type">
+            <EntityTypeMapping TypeName="DNRmanageModel.cutter_type">
+              <MappingFragment StoreEntitySet="cutter_type">
+                <ScalarProperty Name="cutter_typeId" ColumnName="cutter_typeId" />
+                <ScalarProperty Name="cutter_type_name" ColumnName="cutter_type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cutters">
+            <EntityTypeMapping TypeName="DNRmanageModel.cutter">
+              <MappingFragment StoreEntitySet="cutters">
+                <ScalarProperty Name="cutterId" ColumnName="cutterId" />
+                <ScalarProperty Name="cutter_name" ColumnName="cutter_name" />
+                <ScalarProperty Name="cutter_typeId" ColumnName="cutter_typeId" />
+                <ScalarProperty Name="cutter_diameter_decimal_inches" ColumnName="cutter_diameter_decimal_inches" />
+                <ScalarProperty Name="cutter_diameter_fraction_inches" ColumnName="cutter_diameter_fraction_inches" />
+                <ScalarProperty Name="cutter_diameter_mm" ColumnName="cutter_diameter_mm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_drift_sizes">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_drift_sizes">
+              <MappingFragment StoreEntitySet="part_drift_sizes">
+                <ScalarProperty Name="drift_sizeId" ColumnName="drift_sizeId" />
+                <ScalarProperty Name="drift_size_fractional_inches" ColumnName="drift_size_fractional_inches" />
+                <ScalarProperty Name="drift_size_decimal_inches" ColumnName="drift_size_decimal_inches" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_drill_sizes">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_drill_sizes">
+              <MappingFragment StoreEntitySet="part_drill_sizes">
+                <ScalarProperty Name="drill_sizeId" ColumnName="drill_sizeId" />
+                <ScalarProperty Name="drill_size_fractional_inches" ColumnName="drill_size_fractional_inches" />
+                <ScalarProperty Name="drill_size_decimal_inches" ColumnName="drill_size_decimal_inches" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_inner_diameter">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_inner_diameter">
+              <MappingFragment StoreEntitySet="part_inner_diameter">
+                <ScalarProperty Name="inner_diameterId" ColumnName="inner_diameterId" />
+                <ScalarProperty Name="inner_diameter_decimal_inches" ColumnName="inner_diameter_decimal_inches" />
+                <ScalarProperty Name="inner_diameter_fractional_inches" ColumnName="inner_diameter_fractional_inches" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_outer_diameter">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_outer_diameter">
+              <MappingFragment StoreEntitySet="part_outer_diameter">
+                <ScalarProperty Name="outer_diameterId" ColumnName="outer_diameterId" />
+                <ScalarProperty Name="outer_diameter_decimal_inches" ColumnName="outer_diameter_decimal_inches" />
+                <ScalarProperty Name="outer_diameter_fractional_inches" ColumnName="outer_diameter_fractional_inches" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_style">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_style">
+              <MappingFragment StoreEntitySet="part_style">
+                <ScalarProperty Name="styleId" ColumnName="styleId" />
+                <ScalarProperty Name="style_name" ColumnName="style_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="part_threads">
+            <EntityTypeMapping TypeName="DNRmanageModel.part_threads">
+              <MappingFragment StoreEntitySet="part_threads">
+                <ScalarProperty Name="threadID" ColumnName="threadID" />
+                <ScalarProperty Name="thread_name" ColumnName="thread_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parts">
+            <EntityTypeMapping TypeName="DNRmanageModel.part">
+              <MappingFragment StoreEntitySet="parts">
+                <ScalarProperty Name="partId" ColumnName="partId" />
+                <ScalarProperty Name="tooltypeId" ColumnName="tooltypeId" />
+                <ScalarProperty Name="drill_sizeId" ColumnName="drill_sizeId" />
+                <ScalarProperty Name="drift_sizeId" ColumnName="drift_sizeId" />
+                <ScalarProperty Name="threadId" ColumnName="threadId" />
+                <ScalarProperty Name="inner_diameterId" ColumnName="inner_diameterId" />
+                <ScalarProperty Name="outer_diameterId" ColumnName="outer_diameterId" />
+                <ScalarProperty Name="styleId" ColumnName="styleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parts_cutter_junction">
+            <EntityTypeMapping TypeName="DNRmanageModel.parts_cutter_junction">
+              <MappingFragment StoreEntitySet="parts_cutter_junction">
+                <ScalarProperty Name="partId" ColumnName="partId" />
+                <ScalarProperty Name="cutterId" ColumnName="cutterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="repairs">
+            <EntityTypeMapping TypeName="DNRmanageModel.repair">
+              <MappingFragment StoreEntitySet="repairs">
+                <ScalarProperty Name="repairId" ColumnName="repairId" />
+                <ScalarProperty Name="toolId" ColumnName="toolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request_status">
+            <EntityTypeMapping TypeName="DNRmanageModel.request_status">
+              <MappingFragment StoreEntitySet="request_status">
+                <ScalarProperty Name="request_statusId" ColumnName="request_statusId" />
+                <ScalarProperty Name="request_status1" ColumnName="request_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="requests">
+            <EntityTypeMapping TypeName="DNRmanageModel.request">
+              <MappingFragment StoreEntitySet="requests">
+                <ScalarProperty Name="requestId" ColumnName="requestId" />
+                <ScalarProperty Name="repId" ColumnName="repId" />
+                <ScalarProperty Name="stock_pointId" ColumnName="stock_pointId" />
+                <ScalarProperty Name="request_statusId" ColumnName="request_statusId" />
+                <ScalarProperty Name="comments_from_rep" ColumnName="comments_from_rep" />
+                <ScalarProperty Name="comments_from_controller" ColumnName="comments_from_controller" />
+                <ScalarProperty Name="tool_typeId" ColumnName="tool_typeId" />
+                <ScalarProperty Name="partId" ColumnName="partId" />
+                <ScalarProperty Name="drill_sizeId" ColumnName="drill_sizeId" />
+                <ScalarProperty Name="threadId" ColumnName="threadId" />
+                <ScalarProperty Name="styleId" ColumnName="styleId" />
+                <ScalarProperty Name="date_needed" ColumnName="date_needed" />
+                <ScalarProperty Name="toolId_to_fulfill" ColumnName="toolId_to_fulfill" />
+                <ScalarProperty Name="date_to_arrive" ColumnName="date_to_arrive" />
+                <ScalarProperty Name="transit_serviceID" ColumnName="transit_serviceID" />
+                <ScalarProperty Name="transit_dropoff_instructions" ColumnName="transit_dropoff_instructions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="states">
+            <EntityTypeMapping TypeName="DNRmanageModel.state">
+              <MappingFragment StoreEntitySet="states">
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+                <ScalarProperty Name="state_full_name" ColumnName="state_full_name" />
+                <ScalarProperty Name="state_abbr" ColumnName="state_abbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stockPoints">
+            <EntityTypeMapping TypeName="DNRmanageModel.stockPoint">
+              <MappingFragment StoreEntitySet="stockPoint">
+                <ScalarProperty Name="stockPointId" ColumnName="stockPointId" />
+                <ScalarProperty Name="stock_city" ColumnName="stock_city" />
+                <ScalarProperty Name="stock_stateId" ColumnName="stock_stateId" />
+                <ScalarProperty Name="stock_address1" ColumnName="stock_address1" />
+                <ScalarProperty Name="stock_address2" ColumnName="stock_address2" />
+                <ScalarProperty Name="stock_zip" ColumnName="stock_zip" />
+                <ScalarProperty Name="stock_name" ColumnName="stock_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tool_status">
+            <EntityTypeMapping TypeName="DNRmanageModel.tool_status">
+              <MappingFragment StoreEntitySet="tool_status">
+                <ScalarProperty Name="tool_statusId" ColumnName="tool_statusId" />
+                <ScalarProperty Name="tool_status1" ColumnName="tool_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tool_type">
+            <EntityTypeMapping TypeName="DNRmanageModel.tool_type">
+              <MappingFragment StoreEntitySet="tool_type">
+                <ScalarProperty Name="tool_typeId" ColumnName="tool_typeId" />
+                <ScalarProperty Name="tool_type_name" ColumnName="tool_type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tools">
+            <EntityTypeMapping TypeName="DNRmanageModel.tool">
+              <MappingFragment StoreEntitySet="tools">
+                <ScalarProperty Name="toolId" ColumnName="toolId" />
+                <ScalarProperty Name="serial" ColumnName="serial" />
+                <ScalarProperty Name="partId" ColumnName="partId" />
+                <ScalarProperty Name="tool_statusId" ColumnName="tool_statusId" />
+                <ScalarProperty Name="stockPointId" ColumnName="stockPointId" />
+                <ScalarProperty Name="in_transitId" ColumnName="in_transitId" />
+                <ScalarProperty Name="length1" ColumnName="length1" />
+                <ScalarProperty Name="length2" ColumnName="length2" />
+                <ScalarProperty Name="length3" ColumnName="length3" />
+                <ScalarProperty Name="length4" ColumnName="length4" />
+                <ScalarProperty Name="length5" ColumnName="length5" />
+                <ScalarProperty Name="length_total" ColumnName="length_total" />
+                <ScalarProperty Name="top_Od_decimal" ColumnName="top_Od_decimal" />
+                <ScalarProperty Name="mid_Od_decimal" ColumnName="mid_Od_decimal" />
+                <ScalarProperty Name="bottom_Od_decimal" ColumnName="bottom_Od_decimal" />
+                <ScalarProperty Name="top_Od_fractional_inches" ColumnName="top_Od_fractional_inches" />
+                <ScalarProperty Name="mid_Od_fractional_inches" ColumnName="mid_Od_fractional_inches" />
+                <ScalarProperty Name="bottom_Od_fractional_inches" ColumnName="bottom_Od_fractional_inches" />
+                <ScalarProperty Name="sdp_toolId" ColumnName="sdp_toolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

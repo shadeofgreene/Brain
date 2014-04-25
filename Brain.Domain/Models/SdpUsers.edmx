@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sdpUsersModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="sdpUsersModelStoreContainer">
+          <EntitySet Name="accountApprovedLevel" EntityType="sdpUsersModel.Store.accountApprovedLevel" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="apps" EntityType="sdpUsersModel.Store.apps" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="employedBy" EntityType="sdpUsersModel.Store.employedBy" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="sdpNews" EntityType="sdpUsersModel.Store.sdpNews" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="userProfiles" EntityType="sdpUsersModel.Store.userProfiles" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="usersAppsSelections" EntityType="sdpUsersModel.Store.usersAppsSelections" store:Type="Tables" Schema="sdpUsers" />
+          <EntitySet Name="websiteNews" EntityType="sdpUsersModel.Store.websiteNews" store:Type="Tables" Schema="sdpUsers" />
+        </EntityContainer>
+        <EntityType Name="accountApprovedLevel">
+          <Key>
+            <PropertyRef Name="accountApprovedID" />
+          </Key>
+          <Property Name="accountApprovedID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="accountApprovedLevel" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="apps">
+          <Key>
+            <PropertyRef Name="appID" />
+          </Key>
+          <Property Name="appID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="appName" Type="varchar" MaxLength="100" />
+          <Property Name="appIconLocation" Type="varchar" MaxLength="200" />
+          <Property Name="appURL" Type="varchar" MaxLength="200" />
+          <Property Name="appMiniDescription" Type="varchar" MaxLength="400" />
+          <Property Name="appLocked" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employedBy">
+          <Key>
+            <PropertyRef Name="employedByID" />
+          </Key>
+          <Property Name="employedByID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="company" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sdpNews">
+          <Key>
+            <PropertyRef Name="sdpNewsID" />
+          </Key>
+          <Property Name="sdpNewsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="newsTitle" Type="varchar" MaxLength="100" />
+          <Property Name="news date" Type="datetime" />
+          <Property Name="newsAuthor" Type="varchar" MaxLength="200" />
+          <Property Name="newsText" Type="varchar" MaxLength="4000" />
+          <Property Name="displayforEveryone" Type="int" Nullable="false" />
+          <Property Name="userID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userProfiles">
+          <Key>
+            <PropertyRef Name="webuserID" />
+          </Key>
+          <Property Name="webuserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="accountApproved" Type="int" />
+          <Property Name="showNews" Type="int" />
+          <Property Name="showAlert" Type="int" Nullable="false" />
+          <Property Name="employedbyID" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="45" />
+          <Property Name="lastName" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="75" />
+          <Property Name="password" Type="varchar" />
+          <Property Name="alias" Type="varchar" MaxLength="45" />
+          <Property Name="dateAccountCreated" Type="datetime" />
+          <Property Name="lastLoggedIn" Type="datetime" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="100" />
+          <Property Name="IPAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="regionID" Type="int" />
+          <Property Name="p_adminsystem" Type="int" Nullable="false" />
+          <Property Name="p_bittracker" Type="int" Nullable="false" />
+          <Property Name="p_bitrepairmodification" Type="int" Nullable="false" />
+          <Property Name="p_sdfinventoryPatron" Type="int" Nullable="false" />
+          <Property Name="p_sdpinventoryCompany" Type="int" Nullable="false" />
+          <Property Name="p_bittracker_all" Type="int" Nullable="false" />
+          <Property Name="P_bitracker_adamk" Type="int" Nullable="false" />
+          <Property Name="p_bittracker_alaska" Type="int" Nullable="false" />
+          <Property Name="p_nozzlestore" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersAppsSelections">
+          <Key>
+            <PropertyRef Name="usersAppID" />
+          </Key>
+          <Property Name="usersAppID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="int" />
+          <Property Name="appID" Type="int" />
+        </EntityType>
+        <EntityType Name="websiteNews">
+          <Key>
+            <PropertyRef Name="websiteNewsID" />
+          </Key>
+          <Property Name="websiteNewsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="articleTitle" Type="varchar" MaxLength="45" />
+          <Property Name="articleDate" Type="datetime" />
+          <Property Name="articleAuthor" Type="varchar" MaxLength="100" />
+          <Property Name="articleText" Type="varchar" />
+          <Property Name="articlePicURL" Type="varchar" MaxLength="200" />
+          <Property Name="displayOnSite" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sdpUsersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="sdpUsersEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="accountApprovedLevels" EntityType="sdpUsersModel.accountApprovedLevel" />
+          <EntitySet Name="apps" EntityType="sdpUsersModel.app" />
+          <EntitySet Name="employedBies" EntityType="sdpUsersModel.employedBy" />
+          <EntitySet Name="sdpNews" EntityType="sdpUsersModel.sdpNew" />
+          <EntitySet Name="userProfiles" EntityType="sdpUsersModel.userProfile" />
+          <EntitySet Name="usersAppsSelections" EntityType="sdpUsersModel.usersAppsSelection" />
+          <EntitySet Name="websiteNews" EntityType="sdpUsersModel.websiteNew" />
+        </EntityContainer>
+        <EntityType Name="accountApprovedLevel">
+          <Key>
+            <PropertyRef Name="accountApprovedID" />
+          </Key>
+          <Property Name="accountApprovedID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="accountApprovedLevel1" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="app">
+          <Key>
+            <PropertyRef Name="appID" />
+          </Key>
+          <Property Name="appID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="appName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="appIconLocation" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="appURL" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="appMiniDescription" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="appLocked" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employedBy">
+          <Key>
+            <PropertyRef Name="employedByID" />
+          </Key>
+          <Property Name="employedByID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="company" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sdpNew">
+          <Key>
+            <PropertyRef Name="sdpNewsID" />
+          </Key>
+          <Property Name="sdpNewsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="newsTitle" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="news_date" Type="DateTime" />
+          <Property Name="newsAuthor" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="newsText" Type="String" MaxLength="4000" Unicode="false" FixedLength="false" />
+          <Property Name="displayforEveryone" Type="Int32" Nullable="false" />
+          <Property Name="userID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userProfile">
+          <Key>
+            <PropertyRef Name="webuserID" />
+          </Key>
+          <Property Name="webuserID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="accountApproved" Type="Int32" />
+          <Property Name="showNews" Type="Int32" />
+          <Property Name="showAlert" Type="Int32" Nullable="false" />
+          <Property Name="employedbyID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="lastName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="75" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="alias" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="dateAccountCreated" Type="DateTime" />
+          <Property Name="lastLoggedIn" Type="DateTime" />
+          <Property Name="IPAddress" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="IPAddress2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="regionID" Type="Int32" />
+          <Property Name="p_adminsystem" Type="Int32" Nullable="false" />
+          <Property Name="p_bittracker" Type="Int32" Nullable="false" />
+          <Property Name="p_bitrepairmodification" Type="Int32" Nullable="false" />
+          <Property Name="p_sdfinventoryPatron" Type="Int32" Nullable="false" />
+          <Property Name="p_sdpinventoryCompany" Type="Int32" Nullable="false" />
+          <Property Name="p_bittracker_all" Type="Int32" Nullable="false" />
+          <Property Name="P_bitracker_adamk" Type="Int32" Nullable="false" />
+          <Property Name="p_bittracker_alaska" Type="Int32" Nullable="false" />
+          <Property Name="p_nozzlestore" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usersAppsSelection">
+          <Key>
+            <PropertyRef Name="usersAppID" />
+          </Key>
+          <Property Name="usersAppID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="appID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="websiteNew">
+          <Key>
+            <PropertyRef Name="websiteNewsID" />
+          </Key>
+          <Property Name="websiteNewsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="articleTitle" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+          <Property Name="articleDate" Type="DateTime" />
+          <Property Name="articleAuthor" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="articleText" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="articlePicURL" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="displayOnSite" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sdpUsersModelStoreContainer" CdmEntityContainer="sdpUsersEntities">
+          <EntitySetMapping Name="accountApprovedLevels">
+            <EntityTypeMapping TypeName="sdpUsersModel.accountApprovedLevel">
+              <MappingFragment StoreEntitySet="accountApprovedLevel">
+                <ScalarProperty Name="accountApprovedID" ColumnName="accountApprovedID" />
+                <ScalarProperty Name="accountApprovedLevel1" ColumnName="accountApprovedLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="apps">
+            <EntityTypeMapping TypeName="sdpUsersModel.app">
+              <MappingFragment StoreEntitySet="apps">
+                <ScalarProperty Name="appID" ColumnName="appID" />
+                <ScalarProperty Name="appName" ColumnName="appName" />
+                <ScalarProperty Name="appIconLocation" ColumnName="appIconLocation" />
+                <ScalarProperty Name="appURL" ColumnName="appURL" />
+                <ScalarProperty Name="appMiniDescription" ColumnName="appMiniDescription" />
+                <ScalarProperty Name="appLocked" ColumnName="appLocked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employedBies">
+            <EntityTypeMapping TypeName="sdpUsersModel.employedBy">
+              <MappingFragment StoreEntitySet="employedBy">
+                <ScalarProperty Name="employedByID" ColumnName="employedByID" />
+                <ScalarProperty Name="company" ColumnName="company" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sdpNews">
+            <EntityTypeMapping TypeName="sdpUsersModel.sdpNew">
+              <MappingFragment StoreEntitySet="sdpNews">
+                <ScalarProperty Name="sdpNewsID" ColumnName="sdpNewsID" />
+                <ScalarProperty Name="newsTitle" ColumnName="newsTitle" />
+                <ScalarProperty Name="news_date" ColumnName="news date" />
+                <ScalarProperty Name="newsAuthor" ColumnName="newsAuthor" />
+                <ScalarProperty Name="newsText" ColumnName="newsText" />
+                <ScalarProperty Name="displayforEveryone" ColumnName="displayforEveryone" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userProfiles">
+            <EntityTypeMapping TypeName="sdpUsersModel.userProfile">
+              <MappingFragment StoreEntitySet="userProfiles">
+                <ScalarProperty Name="webuserID" ColumnName="webuserID" />
+                <ScalarProperty Name="accountApproved" ColumnName="accountApproved" />
+                <ScalarProperty Name="showNews" ColumnName="showNews" />
+                <ScalarProperty Name="showAlert" ColumnName="showAlert" />
+                <ScalarProperty Name="employedbyID" ColumnName="employedbyID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="alias" ColumnName="alias" />
+                <ScalarProperty Name="dateAccountCreated" ColumnName="dateAccountCreated" />
+                <ScalarProperty Name="lastLoggedIn" ColumnName="lastLoggedIn" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="IPAddress2" ColumnName="IPAddress2" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="regionID" ColumnName="regionID" />
+                <ScalarProperty Name="p_adminsystem" ColumnName="p_adminsystem" />
+                <ScalarProperty Name="p_bittracker" ColumnName="p_bittracker" />
+                <ScalarProperty Name="p_bitrepairmodification" ColumnName="p_bitrepairmodification" />
+                <ScalarProperty Name="p_sdfinventoryPatron" ColumnName="p_sdfinventoryPatron" />
+                <ScalarProperty Name="p_sdpinventoryCompany" ColumnName="p_sdpinventoryCompany" />
+                <ScalarProperty Name="p_bittracker_all" ColumnName="p_bittracker_all" />
+                <ScalarProperty Name="P_bitracker_adamk" ColumnName="P_bitracker_adamk" />
+                <ScalarProperty Name="p_bittracker_alaska" ColumnName="p_bittracker_alaska" />
+                <ScalarProperty Name="p_nozzlestore" ColumnName="p_nozzlestore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usersAppsSelections">
+            <EntityTypeMapping TypeName="sdpUsersModel.usersAppsSelection">
+              <MappingFragment StoreEntitySet="usersAppsSelections">
+                <ScalarProperty Name="usersAppID" ColumnName="usersAppID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="appID" ColumnName="appID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="websiteNews">
+            <EntityTypeMapping TypeName="sdpUsersModel.websiteNew">
+              <MappingFragment StoreEntitySet="websiteNews">
+                <ScalarProperty Name="websiteNewsID" ColumnName="websiteNewsID" />
+                <ScalarProperty Name="articleTitle" ColumnName="articleTitle" />
+                <ScalarProperty Name="articleDate" ColumnName="articleDate" />
+                <ScalarProperty Name="articleAuthor" ColumnName="articleAuthor" />
+                <ScalarProperty Name="articleText" ColumnName="articleText" />
+                <ScalarProperty Name="articlePicURL" ColumnName="articlePicURL" />
+                <ScalarProperty Name="displayOnSite" ColumnName="displayOnSite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

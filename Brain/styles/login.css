@@ -1,0 +1,35 @@
+#loginView .km-widget, .km-content {
+	background: #444444;
+}
+
+#loginView h3 {
+	color: #999999;
+}
+
+#loginView .km-list>li {
+	padding: 11px;
+}
+
+#loginView .logo-image {
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 100px;
+	display: block;
+	margin: 0px auto;
+}
+
+#loginView .km-list input[type=text]:not(.k-input) {
+	-moz-min-width: 12em;
+	-ms-min-width: 12em;
+	-o-min-width: 12em;
+	-webkit-min-width: 12em;
+	min-width: 12em;
+}
+
+#loginView .km-list input[type=password] {
+	-moz-min-width: 12em;
+	-ms-min-width: 12em;
+	-o-min-width: 12em;
+	-webkit-min-width: 12em;
+	min-width: 12em;
+}

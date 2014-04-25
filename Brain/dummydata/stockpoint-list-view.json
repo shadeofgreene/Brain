@@ -1,0 +1,5 @@
+[
+	{'stockPointId':'1', 'stockPointName':'Vernal, UT', 'toolQty':'33'},
+	{'stockPointId':'2', 'stockPointName':'Williston, ND', 'toolQty':'56'},
+	{'stockPointId':'3', 'stockPointName':'Fort Collins, CO', 'toolQty':'15'}
+]

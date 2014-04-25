@@ -1,0 +1,13 @@
+.stockpoint-list-item-stockpoint-name {
+	font-size: 1.2em;
+	display: inline-block;
+}
+
+.stockpoint-list-item-tool-qty {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+#stockPointListItems a {
+	padding: 30px 10px;
+}

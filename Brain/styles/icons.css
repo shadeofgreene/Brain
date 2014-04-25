@@ -1,0 +1,6 @@
+/* fontawesome icons: make sure you add "class='fa' when using it like:
+	<a data-icon='icon-name' class='fa'></a>   " */
+.km-twitter:after,
+.km-twitter:before {
+  content: "\F099";
+}

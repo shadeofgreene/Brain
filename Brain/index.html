@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Title and Metadata -->
+		<title>myBRAIN | Superior Drilling Products Inc.</title>
+		<meta charset="utf-8" />
+
+		<!-- Styles. -->
+		<link href="kendo/styles/kendo.common.min.css" rel="stylesheet" />
+		<link href="kendo/styles/kendo.flat.mobile.min.css" rel="stylesheet" />
+		<link href="styles/app.css" rel="stylesheet" />
+		<link href="styles/drawer.css" rel="stylesheet"/>
+		<link href="styles/login.css" rel="stylesheet"/>
+		<link href="styles/stockPointList.css" rel="stylesheet"/>
+		<link href="styles/toolList.css" rel="stylesheet"/>
+		<link href="styles/toolListFilter.css" rel="stylesheet"/>
+		<link href="toastr/styles/toastr.css" rel="stylesheet"/>
+		<link href="kendo/styles/kendo.default.min.css" rel="stylesheet"/>
+		<link href="styles/kendo-icons.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+		
+		<!-- TEMPLATES -->
+		<!-- Stock Point List Item Template -->
+		<script id="stockpoint-list-item-template" type="text/x-kendo-template">
+			<a class="km-listview-link" data-role="listview-link" id="#=stockPointId#">
+				<div class="stockpoint-list-item-stockpoint-name">
+					#: stockPointName #
+				</div>
+				<div class="stockpoint-list-item-tool-qty">
+					(#: toolQty #)
+				</div>
+			</a>
+		</script>
+		<!-- Tool List Item Template -->
+		<script id="tool-list-item-template" type="text/x-kendo-template">
+			<a class="km-listview-link" data-role="listview-link">
+				<div class="tool-list-item-serialnumber">
+					#: toolSerialNumber #
+				</div>
+				<div class="tool-list-item-status">
+					<span></span> (#: toolStatus #)
+				</div>
+				<div class="tool-list-item-specs">
+					<div>
+						#: toolThread #
+					</div>
+					<div>
+						#: toolSizeWhole + ' ' + toolSizeFraction #
+					</div>
+					<div>
+						#: toolDriftWhole + ' ' + toolDriftFraction #
+					</div>
+				</div>
+			</a>
+		</script>
+	</head>
+	<body>
+		
+		<!-- Simple Page Layout: No Drawer -->
+		<div data-role="layout" data-id="brain-default">
+			<header data-role="header" data-id="brain-default-header">
+				<div data-role="navbar">
+					<span data-role="view-title"></span>
+				</div>
+			</header>
+		</div>
+		
+		<!-- Right Drawer Page Layout: Right Drawer -->
+		<div data-role="layout" data-id="brain-right-drawer">
+			<header data-role="header" data-id="brain-default-header-right-drawer">
+				<div data-role="navbar">
+					<a data-role="backbutton" data-align="left"><i class="fa fa-chevron-left fa3"></i></a>
+					<span data-role="view-title"></span>
+					<a data-role="button" data-rel="drawer" href="#main-drawer" data-align="right"><i class="fa fa-list fa3"></i></a>
+				</div>
+			</header>
+		</div>
+		
+		<!-- Right Drawer Page Layout with Footer: Right Drawer with Footer -->
+		<div data-role="layout" data-id="brain-right-drawer-w-filter">
+			<header data-role="header" data-id="brain-default-header-right-drawer-w-filter">
+				<div data-role="navbar">
+					<a data-role="backbutton" data-align="left"><i class="fa fa-chevron-left fa3"></i></a>
+					<span data-role="view-title"></span>
+					<a data-role="button" data-rel="drawer" href="#filtertool-drawer" data-align="right"><i class="fa fa-list fa3"></i></a>
+				</div>
+			</header>
+			<footer data-role="footer">
+				<div data-role="tabstrip">
+					<a data-icon="filter" data-rel="drawer" href="#filteroptions-drawer" data-align="right">Filter Tools</a>
+				</div>
+			</footer>
+		</div>
+		
+		<!-- No-Header Page Layout -->
+		<div data-role="layout" data-id="brain-no-header">
+		</div>
+		
+		<!-- Default Drawer Menu Items. -->
+		<div id="main-drawer" data-role="drawer" data-views="['./views/toolList.html']" data-position="right">
+			<ul data-role="listview" data-type="group">
+				<li>
+					Main Menu
+					<ul>
+						<li data-icon="action"><a href="#">Make a Request</a></li>
+						<li data-icon="recents"><a href="#">My Requests</a></li>
+						<li data-icon="settings"><a href="./views/toolList.html">Tools</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<!-- Drawer Menu Items with Filter. -->
+		<div id="filtertool-drawer" data-role="drawer" data-views="['./views/toolList.html']" data-position="right">
+			<ul data-role="listview" data-type="group">
+				<li>
+					Main Menu
+					<ul>
+						<li data-icon="action"><a href="#">Make a Request</a></li>
+						<li data-icon="recents"><a href="#">My Requests</a></li>
+						<li data-icon="settings"><a href="./views/toolList.html">Tools</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+		</div>
+		
+		<!-- Drawer for Filter Options. -->
+		<div id="filteroptions-drawer" data-role="drawer" data-views="['./views/toolList.html']" data-position="right">
+			<ul data-role="listview" data-type="group">
+				<li>
+					Filter Options
+					<ul>
+						<li data-icon="action"><label>Ground<input data-role="switch" id="ground-filter-switch" checked="checked" /></label></li>
+						<li data-icon="action"><label>Reserved<input data-role="switch" id="reserved-filter-switch" checked="checked" /></label></li>
+						<li data-icon="action"><label>At Rig<input data-role="switch" id="atrig-filter-switch" checked="checked" /></label></li>
+						<li data-icon="action"><label>Repair<input data-role="switch" id="repair-filter-switch" checked="checked" /></label></li>
+						<li data-icon="action"><label>Down Hole<input data-role="switch" id="downhole-filter-switch" checked="checked" /></label></li>
+						<li data-icon="action"><label>Arriving<input data-role="switch" id="arriving-filter-switch" checked="checked" /></label></li>
+						
+						<li data-icon="action">
+							<label>Thread
+								<select id="thread-filter-dropdown" placeholder="Select One...">
+									<option value="">Choose...</option>
+									<option value="First Option">First Option</option>
+									<option value="Second Option">Second Option</option>
+									<option value="Third Option">Third Option</option>
+								</select>
+							</label>
+						</li>
+						<li data-icon="action">
+							<label>Drill Size
+								<select id="drillsize-filter-dropdown" placeholder="Select One...">
+									<option value="">Choose...</option>
+									<option value="First Option">First Option</option>
+									<option value="Second Option">Second Option</option>
+									<option value="Third Option">Third Option</option>
+								</select>
+							</label>
+						</li>
+						<li data-icon="action">
+							<label>Drift Size
+								<select id="driftsize-filter-dropdown" placeholder="Select One...">
+									<option value="">Choose...</option>
+									<option value="First Option">First Option</option>
+									<option value="Second Option">Second Option</option>
+									<option value="Third Option">Third Option</option>
+								</select>
+							</label>
+						</li>
+						<li data-icon="action">
+							<label>Style
+								<select id="style-filter-dropdown" placeholder="Select One...">
+									<option value="">Choose...</option>
+									<option value="First Option">First Option</option>
+									<option value="Second Option">Second Option</option>
+									<option value="Third Option">Third Option</option>
+								</select>
+							</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<br/>
+			<div class="filter-update-button">
+				<a id="update-tool-list-with-filters" data-click="doSomething" data-role="button">Update Tools</a>
+			</div>
+			
+		</div>
+
+		<!-- Required Scripts -->
+		<script src="cordova.js"></script>
+		<script src="kendo/js/jquery.min.js"></script>
+		<script src="kendo/js/kendo.mobile.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+		<script src="toastr/js/toastr.min.js"></script>
+		<script src="scripts/app.js"></script>
+	
+		<!-- View Models (Scripts)-->
+		<script src="viewModels/loginViewModel.js"></script>
+		<script src="viewModels/stockPointListViewModel.js"></script>
+		<script src="viewModels/toolListFilterViewModel.js"></script>
+		<script src="viewModels/toolListViewModel.js"></script>
+
+	</body>
+</html>

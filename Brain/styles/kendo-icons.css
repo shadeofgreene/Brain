@@ -1,0 +1,4 @@
+.km-filter:after,
+.km-filter:before {
+	content: "\e06c";
+}
